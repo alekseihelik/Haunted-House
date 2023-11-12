@@ -2,6 +2,7 @@ function startGame(){
     window.location.href = 'livingRoom.html';
 }
 
+
 function openPopUp() {
     let url = "help.html";
     let height = 300;
