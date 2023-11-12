@@ -1,7 +1,8 @@
-.container{
-    display: grid;
-    place-items: center;
-    height: 50vh;
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
 }
 
 
@@ -11,26 +12,21 @@
     height: 100vh;
 }
 
-
-.imageContainer {
-    position: relative;
-    overflow: hidden;
+body {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0; 
 }
-
-
-.imageContainer img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
 
 .textContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 24px;
+    color:red;
+    font-weight: bold;
 }
 
 
@@ -44,34 +40,41 @@
 .buttonContainer button {
     margin: 10px;
     padding: 10px 20px;
-    font-size: 1em;
+    font-size: 16px;
 }
 
-
-/*
-#welcome{
-    grid-template-columns: ;
-    grid-template-rows: ;
+.startPage {
+    text-align: center;
 }
 
-
-#start{
-    grid-template-columns: ;
-    grid-template-rows: ;
+#welcome {
+    font-size: 50px; 
+    margin-top: 20px; 
+    color: rgb(145, 5, 5);
+    font-weight: bold;
 }
 
-
-#help{
-    grid-template-columns: ;
-    grid-template-rows: ;
+#startButton,
+#helpButton {
+    font-size: 40px;
+    margin-top: 150px;
+    background: none; 
+    border: none; 
+    outline: none; 
+    cursor: pointer; 
 }
 
+#startButton:hover,
+#helpButton:hover {
+    font-weight: bold; 
+    color: rgb(136, 44, 44);
+}
 
-#name{
-    grid-template-columns: ;
-    grid-template-rows: ;
-} */
-
-
-
-
+#name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 1em; 
+    margin: 10px; 
+    color: aquamarine;
+}
