@@ -21,33 +21,28 @@ var digit1, digit2, digit3, digit4;
 
 document.addEventListener('DOMContentLoaded', function () {
     if (window.location.pathname.endsWith('index.html')) {
-        sessionStorage.removeItem('randomNumber');
-        sessionStorage.removeItem('hasKnife');
-        sessionStorage.removeItem('hasKey');
-        sessionStorage.removeItem('foundFirst');
-        sessionStorage.removeItem('foundSecond');
-        sessionStorage.removeItem('foundThird');
-        sessionStorage.removeItem('foundFourth');
+        clearStorage();
         foundFirst, foundSecond, foundThird, foundFourth = false;
     }
-    let randomNumber = sessionStorage.getItem('randomNumber');
+
+    let randomNumber = getSessionStorageItem('randomNumber');
     if (!randomNumber) {
         randomNumber = generateRandomNumber();
-        sessionStorage.setItem('randomNumber', randomNumber);
+        setSessionStorageItem('randomNumber', randomNumber);
     }
+
     let randomNumberString = randomNumber.toString();
     digit1 = parseInt(randomNumberString[0]);
     digit2 = parseInt(randomNumberString[1]);
     digit3 = parseInt(randomNumberString[2]);
     digit4 = parseInt(randomNumberString[3]);
-    
-    digit1 = JSON.parse(sessionStorage.getItem('digit1'));
-    hasKnife = JSON.parse(sessionStorage.getItem('hasKnife')) || false;
-    hasKey = JSON.parse(sessionStorage.getItem('hasKey')) || false;
-    foundFirst = JSON.parse(sessionStorage.getItem('foundFirst')) || false;
-    foundSecond = JSON.parse(sessionStorage.getItem('foundSecond')) || false;
-    foundThird = JSON.parse(sessionStorage.getItem('foundThird')) || false;
-    foundFourth = JSON.parse(sessionStorage.getItem('foundFourth')) || false;
+
+    hasKnife = JSON.parse(getSessionStorageItem('hasKnife')) || false;
+    hasKey = JSON.parse(getSessionStorageItem('hasKey')) || false;
+    foundFirst = JSON.parse(getSessionStorageItem('foundFirst')) || false;
+    foundSecond = JSON.parse(getSessionStorageItem('foundSecond')) || false;
+    foundThird = JSON.parse(getSessionStorageItem('foundThird')) || false;
+    foundFourth = JSON.parse(getSessionStorageItem('foundFourth')) || false;
 });
 
 function generateRandomNumber() {
@@ -77,10 +72,10 @@ if (window.location.pathname.endsWith('firstBathroom.html')) {
     })
 
     bathroom.addEventListener('click', function () {
-        let string = "You find a paper slip that says: #1 - " + sessionStorage.getItem('digit1');
+        let string = "You find a paper slip that says: #1 - " + digit1;
         bathroomText.textContent = string;
         foundFirst = true;
-        sessionStorage.setItem('foundFirst', JSON.stringify(foundFirst));
+        setSessionStorageItem('foundFirst', foundFirst);
     })
 }
 
@@ -92,14 +87,14 @@ if (window.location.pathname.endsWith('kitchen.html')) {
     misc4.addEventListener('click', function () {
         kitchenText.textContent = 'You find a knife.';
         hasKnife = true;
-        sessionStorage.setItem('hasKnife', JSON.stringify(hasKnife));
+        setSessionStorageItem('hasKnife', hasKnife);
     })
 
     kitchen.addEventListener('click', function () {
         let string = "You find a paper slip that says: #2 - " + digit2;
         kitchenText.textContent = string;
         foundSecond = true;
-        sessionStorage.setItem('foundSecond', JSON.stringify(foundSecond));
+        setSessionStorageItem('foundSecond', foundSecond);
     })
 }
 
@@ -110,8 +105,7 @@ if (window.location.pathname.endsWith('kidBedroom.html')) {
             setTimeout(function () {
                 window.location.href = 'victory.html';
             }, 5000);
-        }
-        else {
+        } else {
             kidText.textContent = 'There is a trap door under the bed, locked by a 4-digit combination lock. Maybe the numbers are somewhere else.';
         }
     })
@@ -121,9 +115,8 @@ if (window.location.pathname.endsWith('kidBedroom.html')) {
             let string = "You insert the key, and the toy chest clicks open. You find a paper slip that says: #4 - " + digit4;
             kidText.textContent = string;
             foundFourth = true;
-            sessionStorage.setItem('foundFourth', JSON.stringify(foundFourth));
-        }
-        else {
+            setSessionStorageItem('foundFourth', foundFourth);
+        } else {
             kidText.textContent = 'The toy chest is locked. Maybe there is a key somewhere.';
         }
     })
@@ -136,11 +129,28 @@ if (window.location.pathname.endsWith('attic.html')) {
             let string = "You cut the rope that was tied around the box and open it. You found a key. Next to it is a paper slip that says: #3 - " + digit3;
             atticText.textContent = string;
             foundThird = true;
-            sessionStorage.setItem('foundThird', JSON.stringify(foundThird));
-            sessionStorage.setItem('hasKey', JSON.stringify(hasKey));
-        }
-        else if (hasKnife === false) {
+            setSessionStorageItem('foundThird', foundThird);
+            setSessionStorageItem('hasKey', hasKey);
+        } else if (hasKnife === false) {
             atticText.textContent = 'There is a rope around the box, not letting you open it.';
         }
     })
+}
+
+function getSessionStorageItem(key) {
+    return sessionStorage.getItem(key);
+}
+
+function setSessionStorageItem(key, value) {
+    sessionStorage.setItem(key, JSON.stringify(value));
+}
+
+function clearStorage() {
+    sessionStorage.removeItem('randomNumber');
+    sessionStorage.removeItem('hasKnife');
+    sessionStorage.removeItem('hasKey');
+    sessionStorage.removeItem('foundFirst');
+    sessionStorage.removeItem('foundSecond');
+    sessionStorage.removeItem('foundThird');
+    sessionStorage.removeItem('foundFourth');
 }
