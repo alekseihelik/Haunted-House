@@ -54,7 +54,7 @@ function generateRandomNumber() {
 }
 
 function startGame(){
-    window.location.href = 'locations/livingRoom.html';
+    window.location.href = 'livingRoom.html';
 }
 
 
