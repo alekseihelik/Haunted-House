@@ -5,7 +5,6 @@
     justify-content: space-between;
 }
 
-
 .mainContainer {
     display: grid;
     grid-template-rows: 60% 25% 1fr;
@@ -19,7 +18,7 @@ body {
     margin: 0; 
 }
 
-.backButton button{
+.backButton button {
     grid-row: 1;
     grid-column: 1;
     display: flex;
@@ -39,17 +38,15 @@ body {
     align-items: center;
     text-align: center;
     font-size: 24px;
-    color:red;
+    color: red;
     font-weight: bold;
 }
-
 
 .buttonContainer {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 
 .buttonContainer button {
     margin: 10px;
@@ -62,7 +59,7 @@ body {
     color: rgb(255, 145, 0);
 }
 
-.buttonContainer button:hover{
+.buttonContainer button:hover {
     font-weight: bold;
 }
 
@@ -100,4 +97,52 @@ body {
     font-size: 1em; 
     margin: 10px; 
     color: aquamarine;
+}
+
+@media screen and (min-width: 1200px) {
+    .buttonContainer button {
+        font-size: 28px;
+        padding: 8px 16px;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .mainContainer {
+        grid-template-rows: 50% 30% 1fr;
+    }
+
+    .buttonContainer button {
+        font-size: 22px;
+        padding: 8px 12px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .mainContainer {
+        grid-template-rows: 40% 35% 1fr;
+    }
+
+    .textContainer {
+        font-size: 18px;
+    }
+
+    .buttonContainer button {
+        font-size: 18px;
+        padding: 6px 10px;
+    }
+
+    .startPage #welcome {
+        font-size: 40px;
+        margin-top: 10px;
+    }
+
+    #startButton,
+    #helpButton {
+        font-size: 32px;
+        margin-top: 100px;
+    }
+
+    #name {
+        font-size: 0.8em;
+    }
 }
