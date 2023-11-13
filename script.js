@@ -4,6 +4,8 @@ let misc3 = document.getElementById('misc3');
 let misc4 = document.getElementById('misc4');
 let kid1 = document.getElementById('kidBed');
 let kid2 = document.getElementById('kidToy');
+let attic = document.getElementById('atticImportant');
+let atticText = document.getElementById('atticText');
 let kidText = document.getElementById('kidText')
 let kitchen = document.getElementById('kitchenImportant');
 let kitchenText = document.getElementById('kitchenText')
@@ -32,6 +34,13 @@ document.addEventListener('DOMContentLoaded', function() {
     digit2 = parseInt(randomNumberString[1]);
     digit3 = parseInt(randomNumberString[2]);
     digit4 = parseInt(randomNumberString[3]);
+
+    hasKnife = JSON.parse(localStorage.getItem('hasKnife')) || false;
+    hasKey = JSON.parse(localStorage.getItem('hasKey')) || false;
+    foundFirst = JSON.parse(localStorage.getItem('foundFirst')) || false;
+    foundSecond = JSON.parse(localStorage.getItem('foundSecond')) || false;
+    foundThird = JSON.parse(localStorage.getItem('foundThird')) || false;
+    foundFourth = JSON.parse(localStorage.getItem('foundFourth')) || false;
 });
 
 function generateRandomNumber() {
@@ -65,6 +74,7 @@ if(window.location.pathname.endsWith('firstBathroom.html')){
         let string = "You find a paper slip that says: #1 - " + digit1;
         bathroomText.textContent = string;
         foundFirst = true; 
+        localStorage.setItem('foundFirst', JSON.stringify(foundFirst));
     })
 }
 
@@ -76,12 +86,14 @@ if(window.location.pathname.endsWith('kitchen.html')){
     misc4.addEventListener('click',function(){
         kitchenText.textContent = 'You find a knife.';
         hasKnife = true;
+        localStorage.setItem('hasKnife', JSON.stringify(hasKnife));
     })
     
     kitchen.addEventListener('click',function(){
         let string = "You find a paper slip that says: #2 - " + digit2;
         kitchenText.textContent = string;
         foundSecond = true;
+        localStorage.setItem('foundSecond', JSON.stringify(foundSecond));
     })
 }
 
@@ -100,9 +112,25 @@ if(window.location.pathname.endsWith('kidBedroom.html')){
             let string = "You find a paper slip that says: #4 - " + digit4;
             kidText.textContent = string;
             foundFourth = true;
+            localStorage.setItem('foundFourth', JSON.stringify(foundFourth));
         }
         else{
             kidText.textContent = 'The toy chest is locked. Maybe there is a key somewhere.';
+        }
+    })
+}
+
+if(window.location.pathname.endsWith('attic.html')){
+    attic.addEventListener('click', function(){
+        if(hasKnife === true){
+            hasKey = true;
+            let string = "You cut the rope that was tied around the box and open it. You found a key. Next to it is a paper slip that says: #3 - " + digit3;
+            atticText.textContent = string;
+            foundThird = true;
+            localStorage.setItem('foundThird', JSON.stringify(foundThird));
+        }
+        else if (hasKnife === false){
+            atticText.textContent = 'There is a rope around the box, not letting you open it.';
         }
     })
 }
