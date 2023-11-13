@@ -22,6 +22,12 @@ var digit1, digit2, digit3, digit4;
 document.addEventListener('DOMContentLoaded', function() {
     if (window.location.pathname.endsWith('index.html')) {
         localStorage.removeItem('randomNumber');
+        localStorage.removeItem('hasKnife');
+        localStorage.removeItem('hasKey');
+        localStorage.removeItem('foundFirst');
+        localStorage.removeItem('foundSecond');
+        localStorage.removeItem('foundThird');
+        localStorage.removeItem('foundFourth');
         foundFirst, foundSecond, foundThird, foundFourth = false;
     }
     let randomNumber = localStorage.getItem('randomNumber');
@@ -100,7 +106,10 @@ if(window.location.pathname.endsWith('kitchen.html')){
 if(window.location.pathname.endsWith('kidBedroom.html')){
     kid1.addEventListener('click',function(){
         if(foundFirst && foundSecond && foundThird && foundFourth){
-
+            kidText.textContent = 'You insert the four-digit combination and the trap door clicks open. You crawl into the trapdoor, and through a tunnel.';
+            setTimeout(function() {
+                window.location.href = 'victory.html';
+            }, 5000);
         }
         else{
             kidText.textContent = 'There is a trap door under the bed, locked by a 4-digit combination lock. Maybe the numbers are somewhere else.';
@@ -109,7 +118,7 @@ if(window.location.pathname.endsWith('kidBedroom.html')){
 
     kid2.addEventListener('click',function(){
         if(hasKey){
-            let string = "You find a paper slip that says: #4 - " + digit4;
+            let string = "You insert the key, and the toy chest clicks open. You find a paper slip that says: #4 - " + digit4;
             kidText.textContent = string;
             foundFourth = true;
             localStorage.setItem('foundFourth', JSON.stringify(foundFourth));
@@ -128,6 +137,7 @@ if(window.location.pathname.endsWith('attic.html')){
             atticText.textContent = string;
             foundThird = true;
             localStorage.setItem('foundThird', JSON.stringify(foundThird));
+            localStorage.setItem('hasKey', JSON.stringify(hasKey));
         }
         else if (hasKnife === false){
             atticText.textContent = 'There is a rope around the box, not letting you open it.';
