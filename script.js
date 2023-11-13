@@ -20,13 +20,19 @@ let foundFourth = false;
 var digit1, digit2, digit3, digit4;
 
 document.addEventListener('DOMContentLoaded', function () {
+    console.log("DOMContentLoaded event fired.");
+
     if (window.location.pathname.endsWith('index.html')) {
+        console.log("Clearing storage for index.html");
         clearStorage();
         foundFirst, foundSecond, foundThird, foundFourth = false;
     }
 
     let randomNumber = getSessionStorageItem('randomNumber');
+    console.log("Random Number from sessionStorage:", randomNumber);
+
     if (!randomNumber) {
+        console.log("Generating random number");
         randomNumber = generateRandomNumber();
         setSessionStorageItem('randomNumber', randomNumber);
     }
@@ -43,6 +49,8 @@ document.addEventListener('DOMContentLoaded', function () {
     foundSecond = JSON.parse(getSessionStorageItem('foundSecond')) || false;
     foundThird = JSON.parse(getSessionStorageItem('foundThird')) || false;
     foundFourth = JSON.parse(getSessionStorageItem('foundFourth')) || false;
+
+    console.log("Initialized variables:", { digit1, digit2, digit3, digit4, hasKnife, hasKey, foundFirst, foundSecond, foundThird, foundFourth });
 });
 
 function generateRandomNumber() {
@@ -54,6 +62,7 @@ function startGame() {
 }
 
 function openPopUp() {
+    console.log("Opening popup");
     let url = "help.html";
     let height = 300;
     let width = 500;
@@ -63,6 +72,7 @@ function openPopUp() {
 }
 
 if (window.location.pathname.endsWith('firstBathroom.html')) {
+    console.log("In firstBathroom.html");
     misc1.addEventListener('click', function () {
         bathroomText.textContent = 'The bathtub is empty, except for a few roaches crawling around.';
     })
@@ -76,10 +86,12 @@ if (window.location.pathname.endsWith('firstBathroom.html')) {
         bathroomText.textContent = string;
         foundFirst = true;
         setSessionStorageItem('foundFirst', foundFirst);
+        console.log("Found first item:", foundFirst);
     })
 }
 
 if (window.location.pathname.endsWith('kitchen.html')) {
+    console.log("In kitchen.html");
     misc3.addEventListener('click', function () {
         kitchenText.textContent = 'This cabinet is locked.';
     })
@@ -88,6 +100,7 @@ if (window.location.pathname.endsWith('kitchen.html')) {
         kitchenText.textContent = 'You find a knife.';
         hasKnife = true;
         setSessionStorageItem('hasKnife', hasKnife);
+        console.log("Found knife:", hasKnife);
     })
 
     kitchen.addEventListener('click', function () {
@@ -95,10 +108,12 @@ if (window.location.pathname.endsWith('kitchen.html')) {
         kitchenText.textContent = string;
         foundSecond = true;
         setSessionStorageItem('foundSecond', foundSecond);
+        console.log("Found second item:", foundSecond);
     })
 }
 
 if (window.location.pathname.endsWith('kidBedroom.html')) {
+    console.log("In kidBedroom.html");
     kid1.addEventListener('click', function () {
         if (foundFirst && foundSecond && foundThird && foundFourth) {
             kidText.textContent = 'You insert the four-digit combination and the trap door clicks open. You crawl into the trapdoor, and through a tunnel.';
@@ -116,6 +131,7 @@ if (window.location.pathname.endsWith('kidBedroom.html')) {
             kidText.textContent = string;
             foundFourth = true;
             setSessionStorageItem('foundFourth', foundFourth);
+            console.log("Found fourth item:", foundFourth);
         } else {
             kidText.textContent = 'The toy chest is locked. Maybe there is a key somewhere.';
         }
@@ -123,6 +139,7 @@ if (window.location.pathname.endsWith('kidBedroom.html')) {
 }
 
 if (window.location.pathname.endsWith('attic.html')) {
+    console.log("In attic.html");
     attic.addEventListener('click', function () {
         if (hasKnife === true) {
             hasKey = true;
@@ -131,6 +148,7 @@ if (window.location.pathname.endsWith('attic.html')) {
             foundThird = true;
             setSessionStorageItem('foundThird', foundThird);
             setSessionStorageItem('hasKey', hasKey);
+            console.log("Found third item and key:", foundThird, hasKey);
         } else if (hasKnife === false) {
             atticText.textContent = 'There is a rope around the box, not letting you open it.';
         }
