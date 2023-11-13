@@ -19,6 +19,20 @@ body {
     margin: 0; 
 }
 
+.backButton button{
+    grid-row: 1;
+    grid-column: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 10px;
+    color: rgb(155, 127, 127);
+    cursor: pointer; 
+    background: none; 
+    border: none; 
+    outline: none; 
+}
+
 .textContainer {
     display: flex;
     justify-content: center;
@@ -40,7 +54,16 @@ body {
 .buttonContainer button {
     margin: 10px;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 24px;
+    background: none; 
+    border: none; 
+    outline: none; 
+    cursor: pointer; 
+    color: brown;
+}
+
+.buttonContainer button:hover{
+    font-weight: bold;
 }
 
 .startPage {
