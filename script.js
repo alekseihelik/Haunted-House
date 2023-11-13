@@ -2,11 +2,15 @@ let misc1 = document.getElementById('misc1');
 let misc2 = document.getElementById('misc2');
 let misc3 = document.getElementById('misc3');
 let misc4 = document.getElementById('misc4');
+let kid1 = document.getElementById('kidBed');
+let kid2 = document.getElementById('kidToy');
+let kidText = document.getElementById('kidText')
 let kitchen = document.getElementById('kitchenImportant');
 let kitchenText = document.getElementById('kitchenText')
 let bathroom = document.getElementById('bathroomImportant');
 let bathroomText = document.getElementById('bathroomText');
 let hasKnife = false;
+let hasKey = false;
 let foundFirst = false;
 let foundSecond = false;
 let foundThird = false;
@@ -78,5 +82,27 @@ if(window.location.pathname.endsWith('kitchen.html')){
         let string = "You find a paper slip that says: #2 - " + digit2;
         kitchenText.textContent = string;
         foundSecond = true;
+    })
+}
+
+if(window.location.pathname.endsWith('kidBedroom.html')){
+    kid1.addEventListener('click',function(){
+        if(foundFirst && foundSecond && foundThird && foundFourth){
+
+        }
+        else{
+            kidText.textContent = 'There is a trap door under the bed, locked by a 4-digit combination lock. Maybe the numbers are somewhere else.';
+        }
+    })
+
+    kid2.addEventListener('click',function(){
+        if(hasKey){
+            let string = "You find a paper slip that says: #4 - " + digit4;
+            kidText.textContent = string;
+            foundFourth = true;
+        }
+        else{
+            kidText.textContent = 'The toy chest is locked. Maybe there is a key somewhere.';
+        }
     })
 }
