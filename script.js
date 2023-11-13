@@ -40,7 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
     digit2 = parseInt(randomNumberString[1]);
     digit3 = parseInt(randomNumberString[2]);
     digit4 = parseInt(randomNumberString[3]);
-
+    
+    digit1 = JSON.parse(sessionStorage.getItem('digit1'));
     hasKnife = JSON.parse(sessionStorage.getItem('hasKnife')) || false;
     hasKey = JSON.parse(sessionStorage.getItem('hasKey')) || false;
     foundFirst = JSON.parse(sessionStorage.getItem('foundFirst')) || false;
@@ -76,7 +77,7 @@ if (window.location.pathname.endsWith('firstBathroom.html')) {
     })
 
     bathroom.addEventListener('click', function () {
-        let string = "You find a paper slip that says: #1 - " + digit1;
+        let string = "You find a paper slip that says: #1 - " + sessionStorage.getItem('digit1');
         bathroomText.textContent = string;
         foundFirst = true;
         sessionStorage.setItem('foundFirst', JSON.stringify(foundFirst));
