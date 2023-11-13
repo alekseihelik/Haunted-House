@@ -5,19 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js" async></script>
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Kitchen</title>
+    <style>
+        body {
+          background-image: url('images/kitchen.png');
+        }
+    </style>
 </head>
 <body>
-    <div class = "mainContainer">
-        <div class = "imageContainer">
-            <img src="images/kitchen.png" alt="Kitchen">
-        </div>    
+    <div class = "mainContainer">   
+        <div class="backButton"><button onclick = "window.location.href='index.html'">Home (Will Reset Progress)</button></div>
         <div class="textContainer">
-            <p>Kitchen</p>
+            <p>You enter a small and dark kitchen. Although it seems quite empty, there are some closed cabinets.</p>
         </div>
         <div class="buttonContainer">
-            <button onclick = "window.location.href='livingroom.html'".html>Go back to Living Room</button>
-            <button>Button 2</button>
+            <button onclick = "window.location.href='livingroom.html'".html>Go back to the Living Room</button>
+            <button>Open the first cabinet</button>
+            <button>Open the second cabinet</button>
+            <button>Open the third cabinet</button>
         </div>          
     </div>
 </body>

@@ -5,19 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js" async></script>
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Bathroom</title>
+    <style>
+        body {
+          background-image: url('images/bathroom.png');
+        }
+    </style>
 </head>
 <body>
     <div class = "mainContainer">
-        <div class = "imageContainer">
-            <img src="images/bathroom.png" alt="Bathroom">
-        </div>    
+        <div class="backButton"><button onclick = "window.location.href='index.html'">Home (Will Reset Progress)</button></div>   
         <div class="textContainer">
-            <p>Bathroom</p>
+            <p id="bathroomText">You enter a bathroom, with walls that look old and cracked. There's a bathtub, a sink, a toilet, and a cabinet under the sink.</p>
         </div>
         <div class="buttonContainer">
-            <button onclick = "window.location.href='livingroom.html'".html>Go back to Living Room</button>
-            <button>Button 2</button>
+            <button onclick = "window.location.href='livingroom.html'".html>Go back to the Living Room</button>
+            <button id="misc1">Look In The Bathtub</button>
+            <button id="misc2">Look In The Toilet</button>
+            <button id="bathroomImportant">Open The Cabinet</button>
         </div>          
     </div>
 </body>
