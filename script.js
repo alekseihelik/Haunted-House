@@ -1,7 +1,12 @@
-let misc1 = document.getElementById('misc1')
-let misc2 = document.getElementById('misc2')
-let bathroom = document.getElementById('bathroomImportant')
-let bathroomText = document.getElementById('bathroomText')
+let misc1 = document.getElementById('misc1');
+let misc2 = document.getElementById('misc2');
+let misc3 = document.getElementById('misc3');
+let misc4 = document.getElementById('misc4');
+let kitchen = document.getElementById('kitchenImportant');
+let kitchenText = document.getElementById('kitchenText')
+let bathroom = document.getElementById('bathroomImportant');
+let bathroomText = document.getElementById('bathroomText');
+let hasKnife = false;
 let foundFirst = false;
 let foundSecond = false;
 let foundThird = false;
@@ -43,17 +48,35 @@ function openPopUp() {
     var newWindow = window.open( url, "center window", 'resizable = yes, width=' + width + ', height=' + height + ', top='+ top + ', left=' + left);
 }
 
+if(window.location.pathname.endsWith('firstBathroom.html')){
+    misc1.addEventListener('click',function(){
+        bathroomText.textContent = 'The bathtub is empty, except for a few roaches crawling around.';
+    })
+    
+    misc2.addEventListener('click',function(){
+        bathroomText.textContent = 'There is nothing in the toilet...';
+    })
+    
+    bathroom.addEventListener('click',function(){
+        let string = "You find a paper slip that says: #1 - " + digit1;
+        bathroomText.textContent = string;
+        foundFirst = true; 
+    })
+}
 
-misc1.addEventListener('click',function(){
-    bathroomText.textContent = 'The bathtub is empty, except for a few roaches crawling around.';
-})
-
-misc2.addEventListener('click',function(){
-    bathroomText.textContent = 'There is nothing in the toilet...';
-})
-
-bathroom.addEventListener('click',function(){
-    let string = "You find a paper slip that says: #1 - " + digit1;
-    bathroomText.textContent = string;
-    foundFirst = true; 
-})
+if(window.location.pathname.endsWith('kitchen.html')){
+    misc3.addEventListener('click',function(){
+        kitchenText.textContent = 'This cabinet is locked.';
+    })
+    
+    misc4.addEventListener('click',function(){
+        kitchenText.textContent = 'You find a knife.';
+        hasKnife = true;
+    })
+    
+    kitchen.addEventListener('click',function(){
+        let string = "You find a paper slip that says: #2 - " + digit2;
+        kitchenText.textContent = string;
+        foundSecond = true;
+    })
+}
